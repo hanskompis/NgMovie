@@ -5,7 +5,7 @@ angular.module('ngMovieApp', [
   'ngResource',
   'ngSanitize'
 ])
-  .config(function ($routeProvider) {
+  .config(['$routeProvider',function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -14,4 +14,6 @@ angular.module('ngMovieApp', [
       .otherwise({
         redirectTo: '/'
       });
-  });
+  }]);
+
+
