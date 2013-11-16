@@ -3,7 +3,7 @@
 angular.module('ngMovieApp')
 
 
- /*   .config(['$httpProvider', function ($httpProvider) {
+    .config(['$httpProvider', function ($httpProvider) {
     
       $httpProvider.defaults.useXDomain = true;
       $httpProvider.defaults.headers.get = {'Accept':'application/json'};
@@ -19,4 +19,3 @@ angular.module('ngMovieApp')
           $scope.data = data["Search"];
         });
   }]);
-*/
