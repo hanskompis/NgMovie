@@ -22,7 +22,7 @@ angular.module('ngMovieApp', [
       delete $httpProvider.defaults.headers.common['X-Requested-With'];
   }])
 
-    .controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http) {
 
       $http.get('http://www.omdbapi.com/?s=Love')
         
@@ -30,6 +30,6 @@ angular.module('ngMovieApp', [
 
           $scope.data = data["Search"];
         });
-  }]);
+  });
 
 
