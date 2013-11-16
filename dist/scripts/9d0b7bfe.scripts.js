@@ -1,0 +1,1 @@
+"use strict";angular.module("ngMovieApp",["ngCookies","ngResource","ngSanitize"]).config(["$routeProvider",function(a){a.when("/",{templateUrl:"views/main.html",controller:"MainCtrl"}).otherwise({redirectTo:"/"})}]),angular.module("ngMovieApp").controller("MainCtrl",["$scope","$http",function(a,b){b.get("manywars.json").success(function(b){a.data=b.Search})}]);
