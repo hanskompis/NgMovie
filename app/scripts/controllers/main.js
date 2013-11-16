@@ -1,10 +1,9 @@
 'use strict';
 
 angular.module('ngMovieApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, $http) {
+  	  $http.get('manywars.json').success(function(data) {
+          $scope.data = data["Search"];
+      });
+ 
   });
