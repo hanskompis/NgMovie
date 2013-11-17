@@ -1,5 +1,12 @@
+<h1 class="page-header">Movies</h1>
 <div class="hero-unit">
-  <h1>Movies</h1>
+  <form>
+    Movie name or part of it: <input type="text" name="movieName" ng-model="movieName">
+    <button class="btn btn-primary" ng-click="search()">Search</button>
+  </form>	
+</div>
+
+<div class="hero-unit">
   <ul>
       <li ng-repeat="item in data">
       		<p>{{item.Title}}</p>
