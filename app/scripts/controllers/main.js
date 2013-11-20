@@ -10,44 +10,61 @@ app.config(['$httpProvider', function ($httpProvider) {
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }]);
 
-app.factory('Movie', function ($http) {
+app.factory('MovieList', function ($http) {
   
-  var movie = {};
+  var movieList = {};
   
-  movie.query = function (queryString) {
+  movieList.query = function (queryString) {
     return  $http.get('http://www.omdbapi.com/?s='+queryString);
   }
 
-    return movie;
+    return movieList;
 });
 
-app.controller('MainCtrl',  function ($scope, Movie) {
+app.factory('MovieDetail', function ($http) {
+  
+  var movieDetail = {};
+  
+  movieDetail.query = function (imdbID) {
+    return  $http.get('http://www.omdbapi.com/?i='+imdbID);
+  }
+
+    return movieDetail;
+});
+
+app.controller('MainCtrl',  function ($scope, MovieList, MovieDetail) {
 
   $scope.movieName = '';
+  $scope.movieDetails = {'asasas' : 'fdgdfg'};
   
   var queryForMovie = function () {
-    Movie.query($scope.movieName)
+
+    MovieList.query($scope.movieName)
         
     .success(function (data) {
-      $scope.data = data["Search"];
+      $scope.movies = data["Search"];
+      setMovieDetails();
     });  
+  };
+
+  var setMovieDetails = function () {
+
+    for (var i = 0; i < $scope.movies.length ; i++) {
+      MovieDetail.query($scope.movies[i].imdbID)
+
+      .success(function (data) {        
+        addData(data);       
+      });
+      
+    }
+  };
+
+  var addData = function (data) {
+    $scope.movieDetails[data.imdbID] = data;
   };
 
   $scope.search = function () {
     queryForMovie();      
   }
 
-  });
-
-/*
-    .controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
-
-  	  $http.get('http://www.omdbapi.com/?s=Love')
-  	    
-  	    .success(function(data) {
-
-          $scope.data = data["Search"];
-        });
-  }]);
-
-*/
+});

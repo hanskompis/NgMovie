@@ -20,3 +20,15 @@ body {
     line-height: 1;
     letter-spacing: -1px;
 }
+
+.detailed {
+    padding: 5px;
+    margin: 10px;
+    background-color: white;
+}
+
+.movie {
+    padding: 5px;
+    margin: 10px;
+    background-color: #EAEAEC;
+}
