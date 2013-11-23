@@ -6,12 +6,16 @@
   </form>	
 </div>
 
-<div class="movie" ng-show="movies">
-      <div class="well" ng-repeat="movie in movies" ng-init="show=false" ng-click="show=!show">
-      		<p>{{movie.Title}} {{movie.Year}}</p>
+<div class="movie" ng-repeat="movie in movieDetails">
+  <movie data="movie"></movie>
+</div>
+
+<div class="movie" ng-show="movieDetails">
+      <div class="well" ng-repeat="movie in movieDetails" ng-init="show=false" ng-click="show=!show">
+      	<p>{{movie.Title}} {{movie.Year}}</p>
 
       	<div class="detailed" ng-show="show">
-      		asdasdasd
+      		{{movieDetails[movie.imdbID]}}
       	</div>
       </div>   
 </div>
